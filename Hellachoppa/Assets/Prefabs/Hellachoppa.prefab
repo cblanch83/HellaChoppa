@@ -844,13 +844,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed1: 600
-  speed2: 200
+  speed2: 300
   turretRef1: {fileID: 454464}
   turretRef2: {fileID: 463478}
   missileRef1: {fileID: 479174}
   missileRef2: {fileID: 417370}
   dustPrefab: {fileID: 19851990, guid: 344055400a55a9e468dc1db5060f095f, type: 2}
-  missilePrefab: {fileID: 166714, guid: 7c124b01211eff84297e9dbc8c4b5400, type: 2}
+  missilePrefab: {fileID: 179542, guid: 7c124b01211eff84297e9dbc8c4b5400, type: 2}
   shooting: 0
 --- !u!1001 &100100000
 Prefab:

@@ -49,11 +49,7 @@ public class Player_Movement : MonoBehaviour {
 
     void FixedUpdate()
     {
-        /*rb.AddRelativeForce(-Physics.gravity.y * rb.mass * Vector3.forward + Vector3.forward * v1 * speed1);
-        rb.AddRelativeTorque(-Vector3.right * v2 * speed2 - Vector3.up * h1 * speed2 + Vector3.forward * h2 * speed2);*/
         rb.AddRelativeForce(-Physics.gravity.y * rb.mass * Vector3.up + Vector3.up * v1 * speed1);
         rb.AddRelativeTorque(Vector3.right * v2 * speed2 - Vector3.forward * h1 * speed2 + Vector3.up * h2 * speed2);
-
-
     }
 }
