@@ -47,7 +47,6 @@ public class Helicopter_Movement : MonoBehaviour {
             }
         }
 			
-
         if (Input.GetButtonUp("AButton")) PlayGun(false);
 
             if (Input.GetButtonDown ("BButton"))
