@@ -66,7 +66,7 @@ public class Helicopter_Movement : MonoBehaviour {
     void FixedUpdate()
     {
         rb.AddRelativeForce(-Physics.gravity.y * rb.mass * Vector3.up + Vector3.up * v1 * speed1);
-        rb.AddRelativeTorque(Vector3.right * v2 * speed2 - Vector3.forward * h1 * speed2 + Vector3.up * h2 * speed2);
+        rb.AddRelativeTorque(Vector3.right * v2 * speed2 - Vector3.forward * h1 * speed2 + Vector3.up * h2 * speed2 * 1.5f);
     }
 
     public void PlayGun(bool state)

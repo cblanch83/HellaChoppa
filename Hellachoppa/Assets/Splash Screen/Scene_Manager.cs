@@ -26,6 +26,6 @@ public class Scene_Manager : MonoBehaviour {
         yield return new WaitForSeconds(3);
         float fadetime = fd.BeginFade(1);
         yield return new WaitForSeconds(1+fadetime);
-        SceneManager.LoadScene("SC_01");
+        SceneManager.LoadScene("Main_Menu");
     }
 }

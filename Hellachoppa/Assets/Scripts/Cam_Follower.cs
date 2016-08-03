@@ -10,6 +10,7 @@ public class Cam_Follower : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
         Time.timeScale = 1;
+        Cursor.visible = false;
 	}
 	
 	// Update is called once per frame

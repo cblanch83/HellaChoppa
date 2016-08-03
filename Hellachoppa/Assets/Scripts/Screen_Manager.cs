@@ -4,8 +4,10 @@ using UnityEngine.UI;
 
 public class Screen_Manager : MonoBehaviour {
 
-    Text txt;
-    Canvas cv;
+    private Text txt;
+    private Canvas cv;
+    private bool isEnded;
+
 	// Use this for initialization
 	void Awake () {
         txt = GetComponentInChildren<Text>();
@@ -21,9 +23,18 @@ public class Screen_Manager : MonoBehaviour {
 
     public void FirstDestroyed(string name)
     {
-        Time.timeScale = 0;
+        if (isEnded) return;
+        isEnded = true;
         if (name == "Hellachoppa") txt.text = "Hellaplane wins!!";
         else if (name == "Hellaplane") txt.text = "Hellachoppa wins!!";
+        StartCoroutine(PopEndScreen());
+    }
+
+    IEnumerator PopEndScreen()
+    {
+        yield return new WaitForSeconds(3.5f);
+        Time.timeScale = 0;
         cv.enabled = true;
+        Cursor.visible = true;
     }
 }
