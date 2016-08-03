@@ -15,6 +15,9 @@ public class Helicopter_Movement : MonoBehaviour {
     public AudioClip gunSound;
     private int ausos_nmb, ausos_i;
 
+    public string LeftJoystickHorizontal, RightJoystickHorizontal, LeftJoystickVertical, RightJoystickVertical,
+        RightBumper, LeftBumper;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -29,27 +32,31 @@ public class Helicopter_Movement : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        //print("LT: " + Input.GetAxisRaw("LeftTrigger_P1") + " RT: " + Input.GetAxisRaw("RightTrigger_P1"));
         //CHECKING HORIZONTAL MOVEMENT
-        h1 = Input.GetAxisRaw("LeftJoystickHorizontal");
-        h2 = Input.GetAxisRaw("RightJoystickHorizontal");
+        h1 = Input.GetAxisRaw(LeftJoystickHorizontal);
+        h2 = Input.GetAxisRaw(RightJoystickHorizontal);
         //CHECKING VERTICAL MOVEMENT
-        v1 = Input.GetAxisRaw("LeftJoystickVertical");
-        v2 = Input.GetAxisRaw("RightJoystickVertical");
+        v1 = Input.GetAxisRaw(LeftJoystickVertical);
+        v2 = Input.GetAxisRaw(RightJoystickVertical);
 
-        //shooting = Input.GetButton("AButton");
-        if (Input.GetButton("AButton"))
+        //shooting = Input.GetButton("AButton_P1");
+        //if (Input.GetButton("AButton_P1"))
+        if (Input.GetButton(RightBumper))
         {
             PlayGun(true);
             if (Physics.Raycast(turretRef1.transform.position, turretRef1.transform.forward, out rch))
             {
                 ParticleSystem obj = (ParticleSystem)Instantiate(dustPrefab, rch.point, Quaternion.Euler(270, 0, 0));
                 Destroy(obj.gameObject, .1f);
+                if (rch.collider.CompareTag("Player"))
+                    rch.collider.GetComponent<Health_Manager>().SendMessage("ApplyDamage", 1);
             }
         }
 			
-        if (Input.GetButtonUp("AButton")) PlayGun(false);
+        if (Input.GetButtonUp(RightBumper)) PlayGun(false);
 
-            if (Input.GetButtonDown ("BButton"))
+        if (Input.GetButtonDown (LeftBumper))
 		{
 			GameObject obj = (GameObject)Instantiate (missilePrefab, missileRef1.transform.position + missileRef1.transform.forward, transform.rotation);
 			obj.GetComponent<Rigidbody> ().AddForce (missileRef1.transform.forward * 3000);
@@ -64,10 +71,6 @@ public class Helicopter_Movement : MonoBehaviour {
 
     public void PlayGun(bool state)
     {
-        /*ausos[ausos_i].clip = gunSound;
-        ausos[ausos_i].Play();
-        ausos_i++;
-        if (ausos_i == ausos_nmb) ausos_i = 0;*/
         if (state)
         {
             //ausos[ausos_i].clip = gunSound;

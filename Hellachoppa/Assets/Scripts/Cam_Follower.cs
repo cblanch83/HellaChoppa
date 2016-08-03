@@ -9,12 +9,12 @@ public class Cam_Follower : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-        	
+        Time.timeScale = 1;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
+        if (mainship == null) return;
         transform.position = mainship.transform.position +
             mainship.transform.right * camPosition.x +
             mainship.transform.up * camPosition.y +
