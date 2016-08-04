@@ -32,6 +32,8 @@ public class Helicopter_Movement : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        //print("Rotation: " + transform.eulerAngles.x);
+        //print("Rotation sin: " + Mathf.Sin(transform.eulerAngles.x*Mathf.PI/180));
         //print("LT: " + Input.GetAxisRaw("LeftTrigger_P1") + " RT: " + Input.GetAxisRaw("RightTrigger_P1"));
         //CHECKING HORIZONTAL MOVEMENT
         h1 = Input.GetAxisRaw(LeftJoystickHorizontal);
@@ -66,6 +68,7 @@ public class Helicopter_Movement : MonoBehaviour {
     void FixedUpdate()
     {
         rb.AddRelativeForce(-Physics.gravity.y * rb.mass * Vector3.up + Vector3.up * v1 * speed1);
+        rb.AddRelativeForce(Mathf.Sin(transform.eulerAngles.x * Mathf.PI / 180) * 1500 * (Vector3.forward + Vector3.up/4));
         rb.AddRelativeTorque(Vector3.right * v2 * speed2 - Vector3.forward * h1 * speed2 + Vector3.up * h2 * speed2 * 1.5f);
     }
 

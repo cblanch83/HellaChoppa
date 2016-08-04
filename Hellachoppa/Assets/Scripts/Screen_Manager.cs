@@ -25,8 +25,8 @@ public class Screen_Manager : MonoBehaviour {
     {
         if (isEnded) return;
         isEnded = true;
-        if (name == "Hellachoppa") txt.text = "Hellaplane wins!!";
-        else if (name == "Hellaplane") txt.text = "Hellachoppa wins!!";
+        if (name == "Hellachoppa") txt.text = "hellaplane wins!!";
+        else if (name == "Hellaplane") txt.text = "hellachoppa wins!!";
         StartCoroutine(PopEndScreen());
     }
 
